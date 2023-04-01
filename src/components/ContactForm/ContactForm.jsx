@@ -1,12 +1,19 @@
+import { useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 import { Field, Form, Input } from './ContactForm.styled';
+import { addContact } from 'redux/actions';
 
 export const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.target;
+    const { name, number } = evt.target.elements;
+    dispatch(addContact(name.value, number.value));
     form.reset();
   };
+
   return (
     <Form onSubmit={handleSubmit} autoComplete="off">
       <Field>

@@ -1,7 +1,11 @@
+import { useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 import { ContactBlock } from './Contact.styled';
+import { deleteContact } from 'redux/actions';
 
 export const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+  const handleDelete = () => dispatch(deleteContact(contact.id));
   return (
     <ContactBlock>
       <p>
@@ -9,7 +13,7 @@ export const Contact = ({ contact }) => {
         <span>: </span>
         <span>{contact.number}</span>
       </p>
-      <Button>Delete</Button>
+      <Button onClick={handleDelete}>Delete</Button>
     </ContactBlock>
   );
 };
