@@ -1,4 +1,5 @@
 import { legacy_createStore } from 'redux';
+import { devToolsEnhancer } from '@redux-devtools/extension';
 
 const initialState = {
   contacts: [
@@ -13,5 +14,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   return state;
 };
+const enhancer = devToolsEnhancer();
 
-export const store = legacy_createStore(rootReducer);
+export const store = legacy_createStore(rootReducer, enhancer);

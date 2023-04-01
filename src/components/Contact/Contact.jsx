@@ -1,13 +1,13 @@
 import { Button } from 'components/Button/Button';
 import { ContactBlock } from './Contact.styled';
 
-export const Contact = () => {
+export const Contact = ({ contact }) => {
   return (
     <ContactBlock>
       <p>
-        <span>Name</span>
+        <span>{contact.name}</span>
         <span>: </span>
-        <span>Number</span>
+        <span>{contact.number}</span>
       </p>
       <Button>Delete</Button>
     </ContactBlock>
