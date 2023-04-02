@@ -7,15 +7,15 @@ export const Filter = () => {
   const filter = useSelector(getContactFilter);
   const dispatch = useDispatch();
 
-  const handleFilterChange = filter => dispatch(setFilter(filter));
+  const handleFilterChange = query => dispatch(setFilter(query.toLowerCase()));
 
   return (
     <FilterBox>
       <FilterLabel>Find contacts by name</FilterLabel>
       <FilterInput
         type="text"
-        value={filter.value}
-        onChange={evt => handleFilterChange(evt.currentTarget.value)}
+        value={filter}
+        onChange={evt => handleFilterChange(evt.target.value)}
       />
     </FilterBox>
   );
