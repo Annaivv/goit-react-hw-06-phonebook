@@ -5,11 +5,14 @@ import { getContactFilter, getContacts } from 'redux/selectors';
 
 const getVisibleContacts = (contacts, filter) => {
   switch (filter) {
-    case filter:
+    case filter !== '':
       const normalizedFilter = filter.toLowerCase();
       return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedFilter)
+        contact.name.includes(normalizedFilter)
       );
+
+    case filter === '':
+      return contacts;
 
     default:
       return contacts;
