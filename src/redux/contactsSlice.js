@@ -13,7 +13,12 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        const existingContact = state.filter(contact =>
+          contact.name.toLowerCase().includes(action.payload.name.toLowerCase())
+        );
+        existingContact
+          ? alert(`${action.payload.name} is already in contacts`)
+          : state.push(action.payload);
       },
       prepare(name, number) {
         return {
